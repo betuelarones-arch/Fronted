@@ -4,28 +4,19 @@
     {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
+      "config": { "distDir": "dist" }
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "https://microservice-1-1hib.onrender.com/$1",
+      "dest": "https://microservice-1-1hib.onrender.com/api/$1",
       "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
         "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Authorization"
       }
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/frontend/$1"
     }
-  ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/frontend/index.html" }
   ]
 }
