@@ -1,35 +1,36 @@
 import axios from 'axios';
 
-// Servicios para Categorías
+const BASE_URL = "https://microservice-1-1hib.onrender.com/api";
+
+// Categorías
 const categoriaApi = axios.create({
-  baseURL: 'https://microservice-1-1hib.onrender.com/api',
+  baseURL: BASE_URL,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
-// Servicios para Productos
+// Productos
 const productoApi = axios.create({
-  baseURL: 'https://microservice-1-1hib.onrender.com/api',
+  baseURL: BASE_URL,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
-// Servicios para Categorías
+// Servicios
 export const categoriaService = {
-  getAll: () => categoriaApi.get('/categorias'),
+  getAll: () => categoriaApi.get("/categorias"),
   getById: (id) => categoriaApi.get(`/categorias/${id}`),
-  create: (data) => categoriaApi.post('/categorias', data),
+  create: (data) => categoriaApi.post("/categorias", data),
   update: (id, data) => categoriaApi.put(`/categorias/${id}`, data),
   delete: (id) => categoriaApi.delete(`/categorias/${id}`),
 };
 
-// Servicios para Productos
 export const productoService = {
-  getAll: () => productoApi.get('/productos'),
+  getAll: () => productoApi.get("/productos"),
   getById: (id) => productoApi.get(`/productos/${id}`),
-  create: (data) => productoApi.post('/productos', data),
+  create: (data) => productoApi.post("/productos", data),
   update: (id, data) => productoApi.put(`/productos/${id}`, data),
   delete: (id) => productoApi.delete(`/productos/${id}`),
 };
