@@ -1,19 +1,18 @@
 import axios from 'axios';
 
+// Base del API-Gateway
+const BASE_URL = 'https://microservice-1-1hib.onrender.com/api';
+
 // Servicios para Categorías
 const categoriaApi = axios.create({
-  baseURL: 'https://microservice-1-1hib.onrender.com/api',
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  baseURL: BASE_URL,
+  headers: { 'Content-Type': 'application/json' },
 });
 
 // Servicios para Productos
 const productoApi = axios.create({
-  baseURL: 'https://microservice-1-1hib.onrender.com/api',
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  baseURL: BASE_URL,
+  headers: { 'Content-Type': 'application/json' },
 });
 
 // Servicios para Categorías
