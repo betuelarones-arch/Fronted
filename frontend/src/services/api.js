@@ -1,37 +1,26 @@
 import axios from 'axios';
 
-// Servicios para Categorías
-const categoriaApi = axios.create({
-  baseURL: 'http://localhost:8081/api',
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL, // ← desde Vercel
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Servicios para Productos
-const productoApi = axios.create({
-  baseURL: 'http://localhost:8082/api',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
-
-// Servicios para Categorías
+// Categorías
 export const categoriaService = {
-  getAll: () => categoriaApi.get('/categorias'),
-  getById: (id) => categoriaApi.get(`/categorias/${id}`),
-  create: (data) => categoriaApi.post('/categorias', data),
-  update: (id, data) => categoriaApi.put(`/categorias/${id}`, data),
-  delete: (id) => categoriaApi.delete(`/categorias/${id}`),
+  getAll: () => api.get('/api/categorias'),
+  getById: (id) => api.get(`/api/categorias/${id}`),
+  create: (data) => api.post('/api/categorias', data),
+  update: (id, data) => api.put(`/api/categorias/${id}`, data),
+  delete: (id) => api.delete(`/api/categorias/${id}`),
 };
 
-// Servicios para Productos
+// Productos
 export const productoService = {
-  getAll: () => productoApi.get('/productos'),
-  getById: (id) => productoApi.get(`/productos/${id}`),
-  create: (data) => productoApi.post('/productos', data),
-  update: (id, data) => productoApi.put(`/productos/${id}`, data),
-  delete: (id) => productoApi.delete(`/productos/${id}`),
+  getAll: () => api.get('/api/productos'),
+  getById: (id) => api.get(`/api/productos/${id}`),
+  create: (data) => api.post('/api/productos', data),
+  update: (id, data) => api.put(`/api/productos/${id}`, data),
+  delete: (id) => api.delete(`/api/productos/${id}`),
 };
-
-export default categoriaApi;
