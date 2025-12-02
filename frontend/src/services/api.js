@@ -1,26 +1,37 @@
 import axios from 'axios';
 
-const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL, // ← desde Vercel
+// Servicios para Categorías
+const categoriaApi = axios.create({
+  baseURL: 'https://microservice-1-1hib.onrender.com/api',
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Categorías
+// Servicios para Productos
+const productoApi = axios.create({
+  baseURL: 'https://microservice-1-1hib.onrender.com/api',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+// Servicios para Categorías
 export const categoriaService = {
-  getAll: () => api.get('/api/categorias'),
-  getById: (id) => api.get(`/api/categorias/${id}`),
-  create: (data) => api.post('/api/categorias', data),
-  update: (id, data) => api.put(`/api/categorias/${id}`, data),
-  delete: (id) => api.delete(`/api/categorias/${id}`),
+  getAll: () => categoriaApi.get('/categorias'),
+  getById: (id) => categoriaApi.get(`/categorias/${id}`),
+  create: (data) => categoriaApi.post('/categorias', data),
+  update: (id, data) => categoriaApi.put(`/categorias/${id}`, data),
+  delete: (id) => categoriaApi.delete(`/categorias/${id}`),
 };
 
-// Productos
+// Servicios para Productos
 export const productoService = {
-  getAll: () => api.get('/api/productos'),
-  getById: (id) => api.get(`/api/productos/${id}`),
-  create: (data) => api.post('/api/productos', data),
-  update: (id, data) => api.put(`/api/productos/${id}`, data),
-  delete: (id) => api.delete(`/api/productos/${id}`),
+  getAll: () => productoApi.get('/productos'),
+  getById: (id) => productoApi.get(`/productos/${id}`),
+  create: (data) => productoApi.post('/productos', data),
+  update: (id, data) => productoApi.put(`/productos/${id}`, data),
+  delete: (id) => productoApi.delete(`/productos/${id}`),
 };
+
+export default categoriaApi;
